@@ -325,6 +325,8 @@ class ConvNetBuilder(object):
       kernel = self.get_variable(
           'weights', [num_channels_in, num_out_channels],
           self.variable_dtype, self.dtype,
+          # TODO(byronyi): use other configuration mechanism
+          partitioner=tf.variable_axis_size_partitioner((512 << 10)),
           initializer=tf.truncated_normal_initializer(stddev=stddev))
       biases = self.get_variable('biases', [num_out_channels],
                                  self.variable_dtype, self.dtype,

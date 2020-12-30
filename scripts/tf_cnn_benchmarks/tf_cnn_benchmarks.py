@@ -32,6 +32,7 @@ import flags
 import mlperf
 from cnn_util import log_fn
 
+tf.load_library('./libplugin.so')
 
 flags.define_flags()
 for name in flags.param_specs.keys():
